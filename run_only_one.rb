@@ -5,12 +5,6 @@ image_id = ARGV[0]
 
 config = eval File.read('./config.rb')
 
-instance_type = config[:instance_type]
-if !instance_type
-  instance_type = 't1.micro'
-end
-
-
 ec2 = AWS::EC2.new({
     :ec2_endpoint => config[:ec2_endpoint],
     :access_key_id => config[:access_key_id],
@@ -65,7 +59,7 @@ ec2.instances.inject({}) { |m, inst|
 
 ec2.instances.create(
   :image_id => image_id,
-  :instance_type => config[:instance_type],
+  :instance_type => config[:instance_type] ? config[:instance_type] : 't1.micro',
   :key_name => config[:key_name],
   :security_group_ids => config[:security_group_ids],
 )
