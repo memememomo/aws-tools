@@ -1,7 +1,9 @@
-require 'aws-sdk'
-AWS.config({
-  :ec2_endpoint => 'ec2.ap-northeast-1.amazonaws.com',
+{
+  :ec2_endpoint => '',
   :access_key_id => '',
-  :secret_access_key => ''
-})
+  :secret_access_key => '',
+  :instance_type => '',
+  :key_name => '',
+  :security_group_ids => '',
+}
 
